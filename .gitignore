@@ -9,7 +9,10 @@ node_modules/
 dist/
 *.log
 
-# Env & secrets (jika suatu saat dipakai)
-.env
-.env.local
-secrets.toml
+# Large raw assets & local backups
+IMG_2405*
+*_backup*
+*old_backup*
+GALAXY.png
+
+

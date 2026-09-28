@@ -10,11 +10,20 @@
   <meta name="description"
     content="Portfolio of Adiel Radithya Putra Irwana — Computer Network & Telecommunications (TJKT) student specializing in network infrastructure, cybersecurity, and AI engineering." />
   <meta name="author" content="Adiel Radithya Putra Irwana" />
+  <meta name="theme-color" content="#0a0e1a" />
+  
+  <!-- OpenGraph Meta Tags -->
   <meta property="og:title" content="Adiel Radithya — Network & AI Engineer Portfolio" />
   <meta property="og:description"
     content="Computer networking, cybersecurity, and AI engineering projects, awards, and certifications." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" />
   <meta property="og:type" content="website" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adiel Radithya Putra Irwana — Network & AI Engineer Portfolio" />
+  <meta name="twitter:description" content="Portfolio of Adiel Radithya: Network Infrastructure, Cybersecurity, and AI Engineering." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" />
 
   <!-- Favicon (Rocket Emoji) -->
   <link rel="icon"
@@ -195,8 +204,8 @@
           <div class="col-lg-5" data-aos="fade-right">
             <div class="profile-card" id="profileCard">
               <div class="profile-card-inner">
-                <img src="assets/profile.jpg" alt="Adiel Radithya Putra Irwana"
-                  onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'">
+                <img src="assets/profile.png?v=2026" alt="Adiel Radithya Putra Irwana"
+                  onerror="this.src='assets/profile.jpg'">
                 <div class="profile-card-overlay">
                   <h4>Adiel Radithya Putra Irwana</h4>
                   <div class="sub">Network & AI Engineer</div>
@@ -644,8 +653,8 @@
           <div class="row g-0 align-items-center">
             <div class="col-lg-6">
               <div class="apod-img-container">
-                <img id="apodImg" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80"
-                  alt="NASA Astronomy Picture of the Day">
+                <img id="apodImg" src="assets/galaxy.png"
+                  alt="Cosmic Galaxy — Deep Space Exploration">
               </div>
             </div>
             <div class="col-lg-6">
@@ -660,9 +669,14 @@
                   telemetry.
                 </p>
                 <div id="apodCopyright" class="text-cyan small mb-4 fw-bold"></div>
-                <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" class="btn btn-space">
-                  <i class="fa-solid fa-up-right-from-square me-2"></i> Official NASA APOD Site
-                </a>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="https://science.nasa.gov/apod/" target="_blank" class="btn btn-space">
+                    <i class="fa-solid fa-up-right-from-square me-2"></i> Official NASA APOD Site
+                  </a>
+                  <button class="btn btn-outline-space" onclick="fetchRandomAPOD()" id="btnRandomApod">
+                    <i class="fa-solid fa-shuffle me-2"></i> Random Cosmic Photo
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -730,17 +744,17 @@
               <div class="row g-3">
                 <div class="col-sm-6">
                   <label class="stat-label mb-2">YOUR NAME</label>
-                  <input type="text" class="form-control bg-white border-secondary p-3" required
+                  <input type="text" class="form-control space-form-input p-3" required
                     placeholder="e.g. Jane Doe">
                 </div>
                 <div class="col-sm-6">
                   <label class="stat-label mb-2">EMAIL ADDRESS</label>
-                  <input type="email" class="form-control bg-white border-secondary p-3" required
+                  <input type="email" class="form-control space-form-input p-3" required
                     placeholder="yourname@example.com">
                 </div>
                 <div class="col-12">
                   <label class="stat-label mb-2">YOUR MESSAGE</label>
-                  <textarea rows="5" class="form-control bg-white border-secondary p-3" required
+                  <textarea rows="5" class="form-control space-form-input p-3" required
                     placeholder="Type your message here..."></textarea>
                 </div>
                 <div class="col-12">
@@ -784,9 +798,9 @@
   </div>
 
   <!-- FLOATING SPACE CLI TERMINAL BUTTON -->
-  <button class="terminal-floating-btn" onclick="openTerminal()">
+  <button class="terminal-floating-btn" onclick="openTerminal()" aria-label="Open Interactive CLI Terminal">
     <i class="fa-solid fa-terminal"></i>
-    <span>&gt;_ TERMINAL</span>
+    <span class="terminal-btn-text">&gt;_ TERMINAL</span>
   </button>
 
   <!-- SCROLL TO TOP ROCKET BUTTON -->

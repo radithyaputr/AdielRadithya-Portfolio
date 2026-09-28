@@ -254,6 +254,14 @@ function initProjectFilters() {
 
 // Live NASA Astronomy Picture of the Day (APOD) API Fetcher
 async function initNASA_APOD() {
+  await renderAPOD(`https://api.nasa.gov/planetary/apod?api_key=${getNasaKey()}`);
+}
+
+function getNasaKey() {
+  return (typeof CONFIG !== 'undefined' && CONFIG.NASA_API_KEY) ? CONFIG.NASA_API_KEY : 'DEMO_KEY';
+}
+
+async function renderAPOD(url) {
   const titleEl = document.getElementById('apodTitle');
   const dateEl = document.getElementById('apodDate');
   const descEl = document.getElementById('apodDesc');
@@ -263,31 +271,47 @@ async function initNASA_APOD() {
   if (!titleEl || !imgEl) return;
 
   try {
-    const apiKey = (typeof CONFIG !== 'undefined' && CONFIG.NASA_API_KEY) ? CONFIG.NASA_API_KEY : 'DEMO_KEY';
-    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`);
+    const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to fetch NASA API');
-    const data = await res.json();
+    const rawData = await res.json();
+    const data = Array.isArray(rawData) ? rawData[0] : rawData;
 
     titleEl.textContent = data.title;
     dateEl.textContent = `DATE: ${data.date} · NASA APOD LIVE`;
     descEl.textContent = data.explanation.length > 320 ? data.explanation.substring(0, 320) + '...' : data.explanation;
+    
     if (data.media_type === 'image') {
-      imgEl.src = data.url;
+      imgEl.src = data.hdurl || data.url;
       imgEl.alt = data.title;
     } else {
-      imgEl.src = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80';
+      imgEl.src = 'assets/galaxy.png';
     }
-    if (copyrightEl && data.copyright) {
-      copyrightEl.textContent = `Image Credit: ${data.copyright}`;
+    if (copyrightEl) {
+      copyrightEl.textContent = data.copyright ? `Image Credit: ${data.copyright}` : 'Public Domain / NASA';
     }
   } catch (err) {
     console.warn('NASA APOD API Fallback:', err);
-    if (titleEl) titleEl.textContent = 'Carina Nebula: Cosmic Pillars of Creation';
-    if (dateEl) dateEl.textContent = 'LIVE TELEMETRY · DEEP SPACE APOD';
-    if (descEl) descEl.textContent = 'Explore stars, nebulae, and cosmic dust captured by NASA space telescopes. Pushing boundaries of human knowledge across deep space.';
-    if (imgEl) imgEl.src = 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80';
+    if (titleEl) titleEl.textContent = 'Milky Way Galaxy: Cosmic Starfields';
+    if (dateEl) dateEl.textContent = 'DEEP SPACE OBSERVATORY · GALAXY';
+    if (descEl) descEl.textContent = 'Spectacular view of billions of stars, interstellar dust, and cosmic nebulae spanning across deep space.';
+    if (imgEl) imgEl.src = 'assets/galaxy.png';
   }
 }
+
+// Random Cosmic Photo Fetcher from NASA Archive
+window.fetchRandomAPOD = async function() {
+  const btn = document.getElementById('btnRandomApod');
+  const originalHtml = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Scanning Cosmos...';
+    btn.disabled = true;
+  }
+  await renderAPOD(`https://api.nasa.gov/planetary/apod?api_key=${getNasaKey()}&count=1`);
+  if (btn) {
+    btn.innerHTML = originalHtml;
+    btn.disabled = false;
+  }
+};
 
 // Dynamic Project Case Study Modal Launcher
 window.openCaseStudy = function(title, category, tech, description, architecture) {
