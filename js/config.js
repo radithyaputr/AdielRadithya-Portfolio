@@ -8,7 +8,7 @@
    ========================================================================== */
 
 const CONFIG = {
-  NASA_API_KEY: 'uOibbxN0M9IrP65ykPZwnkcgDLley3GxkVeyOath',
+  NASA_API_KEY: 'DEMO_KEY',
 
   EMAILJS: {
     /* CARA AMBIL PUBLIC KEY (2 menit, gratis):
