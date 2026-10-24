@@ -1,118 +1,79 @@
 /* ==========================================================================
-   MISSION DOSSIER - MAIN INTERACTION SCRIPT
+   SPACE & TECH PORTFOLIO - MAIN INTERACTION SCRIPT
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initThemePolicy();
+  initThemeToggle();
   initLoader();
-  initMotionSensitivities();
-  initEmailService();
+  initAOS();
+  initTyped();
+  initParticles();
+  initCursorGlow();
   initScrollTop();
-  initScrollSpy();
   initCounterAnimation();
+  init3DTilt();
   initTechStackFilters();
   initProjectFilters();
   initNASA_APOD();
   initNavbarShrink();
 });
 
-// Theme Policy: dark default, OS light on first visit without storage
-function initThemePolicy() {
-  let savedTheme = null;
-  try {
-    savedTheme = localStorage.getItem('nasa-theme');
-  } catch (e) { }
-
-  const initialTheme = (savedTheme === 'light' || savedTheme === 'dark')
-    ? savedTheme
-    : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-
-  setTheme(initialTheme, false);
+// Light / Dark Theme Toggle
+function initThemeToggle() {
+  const savedTheme = localStorage.getItem('nasa-theme') || 'light';
+  setTheme(savedTheme);
 
   const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
   toggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const nextTheme = current === 'dark' ? 'light' : 'dark';
-      setTheme(nextTheme, true);
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
     });
   });
 }
 
-function setTheme(theme, save = true) {
+function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  if (save) {
-    try {
-      localStorage.setItem('nasa-theme', theme);
-    } catch (e) { }
-  }
-
-  const themeMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeMeta) {
-    themeMeta.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#f4f6f9');
-  }
+  localStorage.setItem('nasa-theme', theme);
 
   const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
   toggleBtns.forEach(btn => {
     if (theme === 'dark') {
-      btn.innerHTML = '<i class="fa-solid fa-sun" aria-hidden="true"></i>';
-      btn.setAttribute('aria-label', 'Switch to light theme');
-      btn.setAttribute('title', 'Switch to light theme');
+      btn.innerHTML = '<i class="fa-solid fa-sun text-warning me-1"></i> <span>Light Mode</span>';
     } else {
-      btn.innerHTML = '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
-      btn.setAttribute('aria-label', 'Switch to dark theme');
-      btn.setAttribute('title', 'Switch to dark theme');
+      btn.innerHTML = '<i class="fa-solid fa-moon me-1"></i> <span>Dark Mode</span>';
     }
   });
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced && typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+  if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
     initParticles();
   }
 }
 
-// Loader Hide: <=300ms after window load, plus 4s failsafe timeout
+// Loader Hide
 function initLoader() {
-  let hidden = false;
-  const hide = () => {
-    if (hidden) return;
-    hidden = true;
-    const loader = document.getElementById('loader');
-    if (loader) loader.classList.add('hidden');
-  };
-
   window.addEventListener('load', () => {
-    setTimeout(hide, 250);
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      if (loader) loader.classList.add('hidden');
+    }, 600);
   });
-
-  setTimeout(hide, 4000);
 }
 
-// prefers-reduced-motion gate
-function initMotionSensitivities() {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  initTyped();
-
-  if (!prefersReduced) {
-    initParticles();
-    initCursorGlow();
-    init3DTilt();
-    initAOS();
-  }
-}
-
+// AOS Scroll Animations
 function initAOS() {
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 750,
+      duration: 850,
       once: true,
-      offset: 70,
+      offset: 80,
       easing: 'ease-out-cubic'
     });
   }
 }
 
+// Typed.js Titles
 function initTyped() {
   const typedEl = document.getElementById('typed');
   if (typedEl && typeof Typed !== 'undefined') {
@@ -123,42 +84,41 @@ function initTyped() {
         'Computer Network & Telecommunications (TJKT) Student',
         'Aspiring Deep-Space Communications Engineer'
       ],
-      typeSpeed: 45,
-      backSpeed: 25,
-      backDelay: 1900,
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1800,
       loop: true
     });
   }
 }
 
+// Particles.js Starfield
 function initParticles() {
   if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const particleColors = isDark
-      ? ['#67c8ff', '#fc3d21', '#aeb0b5', '#ffffff']
-      : ['#0b3d91', '#fc3d21', '#323a45', '#aeb0b5'];
+    const particleColors = isDark ? ['#67c8ff', '#fc3d21', '#aeb0b5', '#ffffff'] : ['#0b3d91', '#fc3d21', '#323a45', '#aeb0b5'];
     const lineColor = isDark ? '#67c8ff' : '#0b3d91';
-
     particlesJS('particles-js', {
       particles: {
-        number: { value: 110, density: { enable: true, value_area: 900 } },
+        number: { value: 130, density: { enable: true, value_area: 900 } },
         color: { value: particleColors },
         shape: { type: 'circle' },
-        opacity: { value: 0.75, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.1 } },
+        opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
         size: { value: 2.2, random: true },
         line_linked: { enable: true, distance: 135, color: lineColor, opacity: 0.15, width: 1 },
-        move: { enable: true, speed: 0.65, direction: 'none', random: true, out_mode: 'out' }
+        move: { enable: true, speed: 0.7, direction: 'none', random: true, out_mode: 'out' }
       },
       interactivity: {
         detect_on: 'canvas',
         events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { grab: { distance: 170, line_linked: { opacity: 0.4 } }, push: { particles_nb: 3 } }
+        modes: { grab: { distance: 180, line_linked: { opacity: 0.45 } }, push: { particles_nb: 4 } }
       },
       retina_detect: true
     });
   }
 }
 
+// Mouse Cursor Glow Tracking
 function initCursorGlow() {
   const cursor = document.getElementById('cursorGlow');
   if (cursor) {
@@ -169,6 +129,7 @@ function initCursorGlow() {
   }
 }
 
+// Scroll To Top Button
 function initScrollTop() {
   const scrollBtn = document.getElementById('scrollTop');
   if (scrollBtn) {
@@ -182,11 +143,12 @@ function initScrollTop() {
   }
 }
 
+// Navbar shrink background
 function initNavbarShrink() {
   const navbar = document.querySelector('.navbar');
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 60) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
@@ -195,32 +157,7 @@ function initNavbarShrink() {
   }
 }
 
-// Scrollspy with aria-current="true"
-function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  if (!sections.length || !navLinks.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'true');
-          } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
-          }
-        });
-      }
-    });
-  }, { threshold: 0.35 });
-
-  sections.forEach(sec => observer.observe(sec));
-}
-
+// Stats Counter Animation
 function initCounterAnimation() {
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
@@ -229,7 +166,7 @@ function initCounterAnimation() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
+        const target = parseInt(el.dataset.count);
         let count = 0;
         const step = Math.max(1, Math.ceil(target / 45));
         const timer = setInterval(() => {
@@ -248,15 +185,16 @@ function initCounterAnimation() {
   counters.forEach(c => observer.observe(c));
 }
 
+// 3D Card Tilt Effect
 function init3DTilt() {
-  const cards = document.querySelectorAll('.profile-card');
+  const cards = document.querySelectorAll('.profile-card, .tilt-card');
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const rotY = ((x / rect.width) - 0.5) * 14;
-      const rotX = ((y / rect.height) - 0.5) * -14;
+      const rotY = ((x / rect.width) - 0.5) * 16;
+      const rotX = ((y / rect.height) - 0.5) * -16;
       card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
     });
 
@@ -266,60 +204,55 @@ function init3DTilt() {
   });
 }
 
+// Tech Stack Category Filter
 function initTechStackFilters() {
   const filterBtns = document.querySelectorAll('.btn-filter[data-tech-filter]');
   const techCards = document.querySelectorAll('.tech-item');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
 
       const cat = btn.getAttribute('data-tech-filter');
       techCards.forEach(card => {
         if (cat === 'all' || card.getAttribute('data-category') === cat) {
-          card.style.display = '';
-          setTimeout(() => { card.style.opacity = '1'; }, 40);
+          card.style.display = 'block';
+          setTimeout(() => card.style.opacity = '1', 50);
         } else {
           card.style.opacity = '0';
-          setTimeout(() => { card.style.display = 'none'; }, 250);
+          setTimeout(() => card.style.display = 'none', 300);
         }
       });
     });
   });
 }
 
+// Project Category Filter
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.btn-filter[data-proj-filter]');
   const projCards = document.querySelectorAll('.project-item');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
 
       const cat = btn.getAttribute('data-proj-filter');
       projCards.forEach(card => {
         if (cat === 'all' || card.getAttribute('data-category') === cat) {
-          card.style.display = '';
-          setTimeout(() => { card.style.opacity = '1'; }, 40);
+          card.style.display = 'block';
+          setTimeout(() => card.style.opacity = '1', 50);
         } else {
           card.style.opacity = '0';
-          setTimeout(() => { card.style.display = 'none'; }, 250);
+          setTimeout(() => card.style.display = 'none', 300);
         }
       });
     });
   });
 }
 
+// Live NASA Astronomy Picture of the Day (APOD) API Fetcher
 async function initNASA_APOD() {
   await renderAPOD(`https://api.nasa.gov/planetary/apod?api_key=${getNasaKey()}`);
 }
@@ -339,42 +272,38 @@ async function renderAPOD(url) {
 
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error('NASA APOD API response not ok');
+    if (!res.ok) throw new Error('Failed to fetch NASA API');
     const rawData = await res.json();
     const data = Array.isArray(rawData) ? rawData[0] : rawData;
 
-    titleEl.textContent = data.title || 'Cosmic Capture';
-    dateEl.textContent = `DATE: ${data.date || 'TODAY'} · NASA APOD LIVE`;
-    descEl.textContent = data.explanation && data.explanation.length > 320
-      ? data.explanation.substring(0, 320) + '...'
-      : (data.explanation || 'Direct capture via NASA open telemetry.');
-
+    titleEl.textContent = data.title;
+    dateEl.textContent = `DATE: ${data.date} · NASA APOD LIVE`;
+    descEl.textContent = data.explanation.length > 320 ? data.explanation.substring(0, 320) + '...' : data.explanation;
+    
     if (data.media_type === 'image') {
       imgEl.src = data.hdurl || data.url;
-      imgEl.alt = data.title || 'Astronomy Picture of the Day';
+      imgEl.alt = data.title;
     } else {
       imgEl.src = 'assets/galaxy.png';
-      imgEl.alt = 'Deep-space galaxy field used as fallback for NASA APOD non-image media';
     }
     if (copyrightEl) {
-      copyrightEl.textContent = data.copyright ? `Credit: ${data.copyright}` : 'Public Domain / NASA';
+      copyrightEl.textContent = data.copyright ? `Image Credit: ${data.copyright}` : 'Public Domain / NASA';
     }
   } catch (err) {
+    console.warn('NASA APOD API Fallback:', err);
     if (titleEl) titleEl.textContent = 'Milky Way Galaxy: Cosmic Starfields';
     if (dateEl) dateEl.textContent = 'DEEP SPACE OBSERVATORY · GALAXY';
     if (descEl) descEl.textContent = 'Spectacular view of billions of stars, interstellar dust, and cosmic nebulae spanning across deep space.';
-    if (imgEl) {
-      imgEl.src = 'assets/galaxy.png';
-      imgEl.alt = 'Milky Way Galaxy starfield fallback';
-    }
+    if (imgEl) imgEl.src = 'assets/galaxy.png';
   }
 }
 
-window.fetchRandomAPOD = async function () {
+// Random Cosmic Photo Fetcher from NASA Archive
+window.fetchRandomAPOD = async function() {
   const btn = document.getElementById('btnRandomApod');
   const originalHtml = btn ? btn.innerHTML : '';
   if (btn) {
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2" aria-hidden="true"></i> Scanning Cosmos...';
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Scanning Cosmos...';
     btn.disabled = true;
   }
   await renderAPOD(`https://api.nasa.gov/planetary/apod?api_key=${getNasaKey()}&count=1`);
@@ -384,7 +313,8 @@ window.fetchRandomAPOD = async function () {
   }
 };
 
-window.openCaseStudy = function (title, category, tech, description, architecture) {
+// Dynamic Project Case Study Modal Launcher
+window.openCaseStudy = function(title, category, tech, description, architecture) {
   const modalTitle = document.getElementById('caseStudyTitle');
   const modalCategory = document.getElementById('caseStudyCategory');
   const modalTech = document.getElementById('caseStudyTech');
@@ -401,14 +331,8 @@ window.openCaseStudy = function (title, category, tech, description, architectur
   bsModal.show();
 };
 
-// EmailJS init once at load
-function initEmailService() {
-  if (typeof emailjs !== 'undefined' && typeof CONFIG !== 'undefined' && CONFIG.EMAILJS && CONFIG.EMAILJS.PUBLIC_KEY) {
-    emailjs.init({ publicKey: CONFIG.EMAILJS.PUBLIC_KEY });
-  }
-}
-
-window.handleSubmit = function (e) {
+// Form Transmission Handler
+window.handleSubmit = function(e) {
   e.preventDefault();
 
   const form = e.target;
@@ -424,19 +348,23 @@ window.handleSubmit = function (e) {
     btn.disabled = disabled;
   };
 
+  // EmailJS belum siap (public key kosong / library belum load)
   if (typeof emailjs === 'undefined') {
-    setBtn('<i class="fa-solid fa-circle-exclamation me-2" aria-hidden="true"></i> Email service unavailable — mail me at radith614@gmail.com', false);
+    setBtn('<i class="fa-solid fa-circle-exclamation me-2"></i> Email service unavailable — mail me directly at radith614@gmail.com', false);
     return;
   }
 
   const cfg = (typeof CONFIG !== 'undefined' && CONFIG.EMAILJS) ? CONFIG.EMAILJS : null;
 
   if (!cfg || !cfg.PUBLIC_KEY || !cfg.SERVICE_ID || !cfg.TEMPLATE_ID) {
-    setBtn('<i class="fa-solid fa-circle-exclamation me-2" aria-hidden="true"></i> Email not configured — mail me at radith614@gmail.com', false);
+    setBtn('<i class="fa-solid fa-circle-exclamation me-2"></i> Email not configured — mail me directly at radith614@gmail.com', false);
     return;
   }
 
-  setBtn('<i class="fa-solid fa-satellite-dish me-2" aria-hidden="true"></i> Transmitting Signal...', true);
+  setBtn('<i class="fa-solid fa-satellite-dish me-2"></i> Transmitting Signal...', true);
+
+  // Public key dipanggil sekali di awal (SDK v4)
+  emailjs.init({ publicKey: cfg.PUBLIC_KEY });
 
   emailjs.send(cfg.SERVICE_ID, cfg.TEMPLATE_ID, {
     from_name: name,
@@ -445,13 +373,13 @@ window.handleSubmit = function (e) {
     to_email: cfg.TO_EMAIL
   })
     .then(() => {
-      setBtn('<i class="fa-solid fa-check me-2" aria-hidden="true"></i> Telemetry Sent Successfully!', true);
+      setBtn('<i class="fa-solid fa-check me-2"></i> Telemetry Sent Successfully!', true);
       form.reset();
       setTimeout(() => setBtn(originalContent, false), 4000);
     })
     .catch((err) => {
-      console.warn('EmailJS delivery notification:', err);
-      setBtn('<i class="fa-solid fa-triangle-exclamation me-2" aria-hidden="true"></i> Send failed — mail me at radith614@gmail.com', false);
+      console.error('EmailJS error:', err);
+      setBtn('<i class="fa-solid fa-triangle-exclamation me-2"></i> Send failed — mail me directly at radith614@gmail.com', false);
       setTimeout(() => setBtn(originalContent, false), 5000);
     });
 };
