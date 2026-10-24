@@ -1,33 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('nasa-theme'); } catch (e) { }
+      var theme = (saved === 'light' || saved === 'dark') ? saved : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <!-- SEO & OpenGraph Meta Tags -->
-  <title>Adiel Radithya Putra Irwana — Network & AI Engineer</title>
+  <title>Adiel Radithya Putra Irwana — Network, Cybersecurity & AI</title>
   <meta name="description"
-    content="Portfolio of Adiel Radithya Putra Irwana — Computer Network & Telecommunications (TJKT) student specializing in network infrastructure, cybersecurity, and AI engineering." />
+    content="Official portfolio of Adiel Radithya Putra Irwana, TJKT student at SMKN 1 Kota Bengkulu — network engineering, cybersecurity research, and applied AI. LKS 2026 national finalist." />
   <meta name="author" content="Adiel Radithya Putra Irwana" />
   <meta name="theme-color" content="#0a0e1a" />
-  
+  <link rel="canonical" href="https://radithyaputr.github.io/AdielRadithya-Portfolio/" />
+
   <!-- OpenGraph Meta Tags -->
-  <meta property="og:title" content="Adiel Radithya — Network & AI Engineer Portfolio" />
+  <meta property="og:title" content="Adiel Radithya — Network, Cybersecurity & AI" />
   <meta property="og:description"
-    content="Computer networking, cybersecurity, and AI engineering projects, awards, and certifications." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" />
+    content="Network infrastructure, cybersecurity research, and applied AI engineering. LKS 2026 national finalist with JERNIH Team." />
+  <meta property="og:image" content="https://radithyaputr.github.io/AdielRadithya-Portfolio/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Adiel Radithya — network, cybersecurity, and AI portfolio banner" />
+  <meta property="og:url" content="https://radithyaputr.github.io/AdielRadithya-Portfolio/" />
+  <meta property="og:site_name" content="Adiel Radithya — Portfolio" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Adiel Radithya Putra Irwana — Network & AI Engineer Portfolio" />
-  <meta name="twitter:description" content="Portfolio of Adiel Radithya: Network Infrastructure, Cybersecurity, and AI Engineering." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" />
+  <meta name="twitter:title" content="Adiel Radithya Putra Irwana — Network, Cybersecurity & AI" />
+  <meta name="twitter:description"
+    content="Portfolio of Adiel Radithya: network infrastructure, cybersecurity research, and applied AI." />
+  <meta name="twitter:image"
+    content="https://radithyaputr.github.io/AdielRadithya-Portfolio/assets/og-image.png" />
 
-  <!-- Favicon (Rocket Emoji) -->
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,39 +53,60 @@
   <!-- Devicon icons for tech stack -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
-  <!-- AOS Animations CSS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <!-- Google Fonts: Orbitron & Space Grotesk -->
+  <!-- Google Fonts: Orbitron, Space Grotesk, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@700;900&family=Space+Grotesk:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <!-- Custom Space Theme Stylesheet -->
+  <!-- Custom Dossier Theme Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adiel Radithya Putra Irwana",
+    "url": "https://radithyaputr.github.io/AdielRadithya-Portfolio/",
+    "image": "https://radithyaputr.github.io/AdielRadithya-Portfolio/assets/og-image.png",
+    "jobTitle": "Network & AI Engineering Student",
+    "description": "TJKT student at SMKN 1 Kota Bengkulu focused on network infrastructure, cybersecurity research, and applied AI.",
+    "alumniOf": {
+      "@type": "School",
+      "name": "SMKN 1 Kota Bengkulu"
+    },
+    "knowsAbout": ["Computer Networking", "Cybersecurity", "Vulnerability Research", "Applied AI"],
+    "sameAs": [
+      "https://github.com/radithyaputr",
+      "https://www.linkedin.com/in/radithya-putra-9baa99333",
+      "https://www.instagram.com/radithyaputr_/",
+      "https://www.tiktok.com/@radithyaputr_"
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- PAGE LOADER -->
   <div class="loader" id="loader">
-    <div class="rocket-loader">🚀</div>
-    <div class="text-cyan brand-font mt-3" style="letter-spacing: 3px; font-size: 0.85rem;">INITIALIZING PORTFOLIO...
-    </div>
+    <i class="fa-solid fa-rocket rocket-loader" aria-hidden="true"></i>
+    <div class="loader-text mono">ESTABLISHING UPLINK</div>
   </div>
 
   <!-- MOUSE CURSOR GLOW -->
-  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
   <!-- STARFIELD BACKGROUND -->
-  <div id="particles-js"></div>
+  <div id="particles-js" aria-hidden="true"></div>
 
   <!-- ANIMATED SHOOTING STARS -->
-  <div class="shooting-star" style="top: 15%; right: 0; animation-delay: 0s;"></div>
-  <div class="shooting-star" style="top: 40%; right: 0; animation-delay: 2.5s;"></div>
-  <div class="shooting-star" style="top: 70%; right: 0; animation-delay: 4.5s;"></div>
+  <div class="shooting-star" style="top: 15%; right: 0; animation-delay: 0s;" aria-hidden="true"></div>
+  <div class="shooting-star" style="top: 40%; right: 0; animation-delay: 2.5s;" aria-hidden="true"></div>
+  <div class="shooting-star" style="top: 70%; right: 0; animation-delay: 4.5s;" aria-hidden="true"></div>
 
   <div class="content-wrapper">
 
@@ -78,32 +114,32 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#home">
-          <i class="fa-solid fa-satellite-dish me-1" style="color: var(--nasa-red);"></i>RADITHYA<span
-            style="color: var(--text-primary); font-size: 0.75rem; opacity: 0.7;">.dev</span>
+          <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i>RADITHYA<span class="brand-suffix mono">.DEV</span>
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
-          aria-label="Toggle navigation">
-          <i class="fa-solid fa-bars" style="color: var(--text-primary);"></i>
+          aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navMain">
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Tech Stack</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Tech</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#certifications">Credentials</a></li>
-            <li class="nav-item"><a class="nav-link" href="#nasa">NASA APOD</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certifications">Honors</a></li>
+            <li class="nav-item"><a class="nav-link" href="#security">Security</a></li>
+            <li class="nav-item"><a class="nav-link" href="#nasa">APOD</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <button class="btn btn-nav-terminal theme-toggle-btn">
-                <i class="fa-solid fa-moon me-1"></i> Dark Mode
+              <button class="theme-toggle-btn" type="button" aria-label="Switch to light theme" title="Switch theme">
+                <i class="fa-solid fa-sun" aria-hidden="true"></i>
               </button>
             </li>
             <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <button class="btn btn-nav-terminal" onclick="openTerminal()">
-                <i class="fa-solid fa-terminal me-1"></i> CLI
+              <button class="btn btn-nav-terminal" type="button" onclick="openTerminal()">
+                <i class="fa-solid fa-terminal me-1" aria-hidden="true"></i> CLI
               </button>
             </li>
           </ul>
@@ -111,686 +147,695 @@
       </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-7" data-aos="fade-right">
+    <main id="main" tabindex="-1">
 
-            <span class="badge-pill-space mb-4">
-              <span class="dot"></span> NETWORK ENGINEERING · CYBERSECURITY · AI
-            </span>
+      <!-- HERO SECTION -->
+      <section class="hero" id="home">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-main">
 
-            <h1>
-              Greetings, I'm <span class="gradient-text">Adiel Radithya</span><br>
-              <span id="typed" style="color: var(--text-primary);"></span><span class="typing-cursor">|</span>
-            </h1>
+              <div class="hero-meta mono">
+                <span>DOSSIER AR-TJKT-2026</span>
+                <span>SMKN 1 KOTA BENGKULU</span>
+                <span>3.805&deg;S 102.273&deg;E</span>
+              </div>
 
-            <p class="lead mt-4" style="color: var(--text-muted); max-width: 580px; line-height: 1.8;">
-              Computer Network &amp; Telecommunications (TJKT) student at <strong
-                style="color: var(--text-primary);">SMKN 1 Kota
-                Bengkulu (XI TJKT 1)</strong> — specializing in network architecture, cybersecurity, and AI
-              engineering, with an ambition to contribute to deep-space communications and mission-critical network
-              infrastructure.
-            </p>
+              <h1 class="hero-title">Adiel Radithya</h1>
 
-            <div class="mt-4 d-flex flex-wrap gap-3">
-              <a href="#projects" class="btn btn-space">
-                <i class="fa-solid fa-rocket me-2"></i> View Projects
-              </a>
-              <button onclick="openTerminal()" class="btn btn-outline-space">
-                <i class="fa-solid fa-terminal me-2"></i> Open Terminal
-              </button>
-              <a href="assets/CV-Adiel-Radithya.pdf" download class="btn btn-outline-space"
-                style="color: var(--nasa-red) !important; border-color: var(--nasa-red);">
-                <i class="fa-solid fa-file-pdf me-2"></i> Download CV (PDF)
-              </a>
-              <a href="assets/cv.html" target="_blank" class="btn btn-outline-space">
-                <i class="fa-solid fa-eye me-2"></i> Preview CV
-              </a>
-            </div>
+              <div class="hero-role">
+                <span id="typed">Network Engineer &amp; Cybersecurity Enthusiast</span><span class="typing-cursor" aria-hidden="true">|</span>
+              </div>
 
-            <!-- Animated Stats Grid -->
-            <div class="row mt-5 g-3" style="max-width: 540px;">
-              <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="stat-card">
-                  <div class="stat-value" data-count="3">0</div>
+              <p class="lead">
+                TJKT student at <strong>SMKN 1 Kota Bengkulu</strong>, focused on network infrastructure, cybersecurity
+                research, and applied AI. Building toward resilient communications for mission-critical systems.
+              </p>
+
+              <div class="hero-ctas">
+                <a href="#projects" class="btn btn-solid">
+                  <i class="fa-solid fa-rocket me-2" aria-hidden="true"></i> View Projects
+                </a>
+                <button onclick="openTerminal()" class="btn btn-ghost" type="button">
+                  <i class="fa-solid fa-terminal me-2" aria-hidden="true"></i> Open Terminal
+                </button>
+                <a href="assets/CV-Adiel-Radithya.pdf" download class="btn btn-ghost">
+                  <i class="fa-solid fa-file-pdf me-2" aria-hidden="true"></i> Download CV
+                </a>
+              </div>
+
+              <div class="hero-subcta mono">
+                <a href="assets/cv.html" target="_blank" rel="noopener">Preview CV in browser <i
+                    class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                <span class="sep">/</span>
+                <span>PDF &middot; UPDATED 2026</span>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-cell">
+                  <div class="stat-value mono" data-count="3">0</div>
                   <div class="stat-label">Featured Projects</div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="stat-card">
-                  <div class="stat-value" data-count="4">0</div>
-                  <div class="stat-label">Certifications</div>
+                <div class="stat-cell">
+                  <div class="stat-value mono" data-count="3">0</div>
+                  <div class="stat-label">Credentials</div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-card">
-                  <div class="stat-value" data-count="2">0</div>
-                  <div class="stat-label">National Awards</div>
+                <div class="stat-cell">
+                  <div class="stat-value mono" data-count="1">0</div>
+                  <div class="stat-label">National Award</div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="stat-card">
-                  <div class="stat-value" data-count="5">0</div>
+                <div class="stat-cell">
+                  <div class="stat-value mono" data-count="5">0</div>
                   <div class="stat-label">JERNIH Team</div>
                 </div>
               </div>
+
             </div>
 
-          </div>
-
-          <!-- 3D Planet Hero Graphic -->
-          <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
-            <div class="planet-wrap">
-              <div class="ring"></div>
-              <div class="ring ring-2"></div>
-              <div class="orbit">
-                <div class="moon"></div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="planet-wrap">
+                <div class="ring"></div>
+                <div class="ring ring-2"></div>
+                <div class="orbit">
+                  <div class="moon"></div>
+                </div>
+                <div class="planet"></div>
               </div>
-              <div class="planet"></div>
             </div>
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="row g-5 align-items-center">
+      <!-- ABOUT SECTION -->
+      <section class="section section-about" id="about">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-label mono"><span class="sec-index">SECTION-01</span><span class="sec-div"></span><span
+                class="sec-name">SIGNAL</span></div>
+            <h2 class="section-title">Architecting <span class="accent">resilient</span> networks.</h2>
+          </div>
 
-          <div class="col-lg-5" data-aos="fade-right">
-            <div class="profile-card" id="profileCard">
-              <div class="profile-card-inner">
-                <img src="assets/profile.png?v=2026" alt="Adiel Radithya Putra Irwana"
-                  onerror="this.src='assets/profile.jpg'">
-                <div class="profile-card-overlay">
-                  <h4>Adiel Radithya Putra Irwana</h4>
-                  <div class="sub">Network & AI Engineer</div>
-                  <div class="status-indicator">
-                    <span class="dot" style="width: 7px; height: 7px; border-radius: 50%; background: #10b981;"></span>
-                    <span>OPEN TO COLLABORATION</span>
+          <div class="about-grid">
+            <div class="about-media">
+              <div class="profile-card" id="profileCard">
+                <div class="profile-card-inner">
+                  <picture>
+                    <source srcset="assets/profile.webp" type="image/webp">
+                    <img src="assets/profile.jpg" alt="Portrait of Adiel Radithya Putra Irwana" width="674"
+                      height="1200" loading="lazy" decoding="async">
+                  </picture>
+                  <div class="hud-grid" aria-hidden="true"></div>
+                  <div class="hud-corners" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
                   </div>
+                  <span class="hud-tag mono">ASC &middot; 2026</span>
+                </div>
+              </div>
+
+              <div class="id-rows">
+                <div class="id-row">
+                  <span class="mono">NAME</span>
+                  <strong>Adiel Radithya Putra Irwana</strong>
+                </div>
+                <div class="id-row">
+                  <span class="mono">ROLE</span>
+                  <strong>Network &amp; AI Engineering Student</strong>
+                </div>
+                <div class="id-row">
+                  <span class="mono">STATUS</span>
+                  <strong class="status-live"><span class="dot" aria-hidden="true"></span>OPEN TO COLLABORATION</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-copy">
+              <p>
+                I study Computer Network and Telecommunications (TJKT) at SMKN 1 Kota Bengkulu, Indonesia. My work sits
+                at the intersection of network architecture, cybersecurity, and applied AI — from multi-VLAN enterprise
+                simulations to a national-award AI platform.
+              </p>
+              <p>
+                My long-term goal is to contribute to deep-space communications and mission-critical infrastructure:
+                resilient protocols, satellite networks, and systems that keep working when conditions are not ideal.
+              </p>
+
+              <div class="info-panel">
+                <div class="info-row">
+                  <span class="mono">MAJOR / TRACK</span>
+                  <strong>TJKT — Network &amp; Telecom</strong>
+                </div>
+                <div class="info-row">
+                  <span class="mono">FOCUS AREA</span>
+                  <strong>Network &amp; Cybersecurity</strong>
+                </div>
+                <div class="info-row info-foot mono">
+                  <span>BASED IN BENGKULU</span>
+                  <span>UTC+7</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="col-lg-7" data-aos="fade-left">
-            <div class="section-label"><i class="fa-solid fa-user-astronaut"></i> // ABOUT ME</div>
-            <h2 class="section-title">Architecting the <span class="gradient-text">Future of Networks</span></h2>
+      <!-- TECH STACK MATRIX SECTION -->
+      <section class="section section-tech" id="skills">
+        <div class="container">
 
-            <p style="color: var(--text-muted); line-height: 1.9; font-size: 1.05rem;">
-              I am <strong style="color: var(--text-primary);">Adiel Radithya Putra Irwana</strong>, a Computer Network &
-              Telecommunication Engineering (TJKT) student at
-              SMKN 1 Kota Bengkulu, Indonesia. My core passion lies at the intersection of network architecture,
-              cybersecurity, and space technology.
+          <div class="section-head section-head-split">
+            <div>
+              <div class="section-label mono"><span class="sec-index">SECTION-02</span><span class="sec-div"></span><span
+                  class="sec-name">SYSTEMS</span></div>
+              <h2 class="section-title">Protocols, systems, and tools.</h2>
+            </div>
+            <p class="section-desc">
+              A working matrix of the tools and protocols I use to design, secure, and operate infrastructure —
+              grouped by how they are applied.
             </p>
+          </div>
 
-            <p style="color: var(--text-muted); line-height: 1.9; font-size: 1.05rem;">
-              My ultimate ambition is to contribute to <strong style="color: var(--nasa-red);">NASA's Space
-                Communications and Navigation (SCaN)</strong>
-              division — designing resilient high-throughput protocols for deep-space communications, satellite
-              networks,
-              and lunar/Martian habitat infrastructure.
+          <div class="filter-btn-group" role="group" aria-label="Filter technical skills">
+            <button class="btn-filter active" type="button" data-tech-filter="all" aria-pressed="true">All Skills</button>
+            <button class="btn-filter" type="button" data-tech-filter="networking" aria-pressed="false">Networking &
+              Protocols</button>
+            <button class="btn-filter" type="button" data-tech-filter="cybersec" aria-pressed="false">Cybersecurity &
+              Systems</button>
+            <button class="btn-filter" type="button" data-tech-filter="webdev" aria-pressed="false">Web &amp;
+              Software</button>
+          </div>
+
+          <div class="tech-layout" id="techGrid">
+
+            <div class="tech-group tech-core">
+              <div class="group-head mono"><span>CORE MATRIX</span><span>04 SYSTEMS</span></div>
+
+              <div class="tech-row tech-item" data-category="networking">
+                <i class="fa-solid fa-network-wired tech-icon" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">Cisco Networking</div>
+                  <div class="tech-meta mono">ROUTING &middot; SWITCHING &middot; ACL</div>
+                </div>
+                <span class="tech-tag mono">NET</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="cybersec">
+                <i class="devicon-linux-plain tech-icon" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">Linux OS</div>
+                  <div class="tech-meta mono">DEBIAN &middot; UBUNTU &middot; BASH</div>
+                </div>
+                <span class="tech-tag mono">OPS</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="networking">
+                <i class="fa-solid fa-chart-line tech-icon" style="color: #38bdf8;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">Wireshark</div>
+                  <div class="tech-meta mono">PACKET ANALYSIS &middot; TCP/IP</div>
+                </div>
+                <span class="tech-tag mono">NET</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="webdev">
+                <i class="devicon-python-plain tech-icon" style="color: #ffde57;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">Python</div>
+                  <div class="tech-meta mono">AUTOMATION &middot; SCRIPTING</div>
+                </div>
+                <span class="tech-tag mono">DEV</span>
+              </div>
+
+            </div>
+
+            <div class="tech-group tech-samples">
+              <div class="group-head mono"><span>SAMPLE STACK</span><span>04 TOOLS</span></div>
+
+              <div class="tech-row tech-item" data-category="webdev">
+                <i class="devicon-html5-plain tech-icon" style="color: #e44d26;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">HTML5</div>
+                  <div class="tech-meta mono">SEMANTIC MARKUP</div>
+                </div>
+                <span class="tech-tag mono">DEV</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="webdev">
+                <i class="devicon-css3-plain tech-icon" style="color: #264de4;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">CSS3 Modern</div>
+                  <div class="tech-meta mono">FLEX &middot; GRID &middot; RESPONSIVE</div>
+                </div>
+                <span class="tech-tag mono">DEV</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="webdev">
+                <i class="devicon-javascript-plain tech-icon" style="color: #f7df1e;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">JavaScript</div>
+                  <div class="tech-meta mono">ES6+ &middot; ASYNC &middot; DOM</div>
+                </div>
+                <span class="tech-tag mono">DEV</span>
+              </div>
+
+              <div class="tech-row tech-item" data-category="cybersec">
+                <i class="devicon-git-plain tech-icon" style="color: #f05032;" aria-hidden="true"></i>
+                <div class="tech-info">
+                  <div class="tech-name">Git &amp; GitHub</div>
+                  <div class="tech-meta mono">VERSION CONTROL</div>
+                </div>
+                <span class="tech-tag mono">SEC</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SHOWCASE SECTION -->
+      <section class="section section-projects" id="projects">
+        <div class="container">
+
+          <div class="section-head section-head-split">
+            <div>
+              <div class="section-label mono"><span class="sec-index">SECTION-03</span><span class="sec-div"></span><span
+                  class="sec-name">DOSSIERS</span></div>
+              <h2 class="section-title">Selected dossiers.</h2>
+            </div>
+            <p class="section-desc">
+              Real work across networking, applied AI, and infrastructure. Open any dossier for the architecture and
+              challenge behind it.
             </p>
+          </div>
 
-            <div class="row mt-4 g-3">
-              <div class="col-sm-6">
-                <div class="glass p-3 d-flex align-items-center gap-3">
-                  <div class="icon-box m-0" style="width: 46px; height: 46px; font-size: 1.2rem;">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                  </div>
-                  <div>
-                    <div class="stat-label">MAJOR / TRACK</div>
-                    <div class="fw-bold" style="color: var(--text-primary);">TJKT (Network & Telecom)</div>
-                  </div>
-                </div>
+          <div class="filter-btn-group" role="group" aria-label="Filter projects">
+            <button class="btn-filter active" type="button" data-proj-filter="all" aria-pressed="true">All Projects</button>
+            <button class="btn-filter" type="button" data-proj-filter="networking" aria-pressed="false">Networking</button>
+            <button class="btn-filter" type="button" data-proj-filter="webapps" aria-pressed="false">Web Apps</button>
+            <button class="btn-filter" type="button" data-proj-filter="hardware" aria-pressed="false">Hardware</button>
+          </div>
+
+          <div class="projects-layout" id="projectGrid">
+
+            <!-- Project 2: JERNIH. AI Civic Platform -->
+            <article class="project-item project-featured" data-category="webapps">
+              <div class="featured-visual">
+                <img src="assets/projects/project-2.jpg"
+                  onerror="this.onerror=null;this.src='assets/projects/project-jernih-mockup.svg'"
+                  alt="Mockup preview — JERNIH AI civic platform interface with four-tier model fallback ladder"
+                  width="800" height="500" loading="lazy" decoding="async">
               </div>
-              <div class="col-sm-6">
-                <div class="glass p-3 d-flex align-items-center gap-3">
-                  <div class="icon-box m-0"
-                    style="width: 46px; height: 46px; font-size: 1.2rem; color: var(--neon-pink);">
-                    <i class="fa-solid fa-shield-halved"></i>
-                  </div>
-                  <div>
-                    <div class="stat-label">FOCUS AREA</div>
-                    <div class="fw-bold" style="color: var(--text-primary);">Network & Cybersecurity</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- TECH STACK MATRIX SECTION -->
-    <section class="section" id="skills">
-      <div class="container">
-
-        <div class="text-center mb-5" data-aos="fade-up">
-          <div class="section-label"><i class="fa-solid fa-cpu"></i> // TECHNICAL SKILLS</div>
-          <h2 class="section-title">Protocol & <span class="gradient-text">Tech Stack Matrix</span></h2>
-          <p style="color: var(--text-muted); max-width: 620px; margin: 0 auto;">
-            A comprehensive overview of tools, protocols, systems, and programming languages I leverage to design
-            secure, high-performance infrastructure.
-          </p>
-        </div>
-
-        <!-- Filter Tab Buttons -->
-        <div class="filter-btn-group" data-aos="fade-up" data-aos-delay="100">
-          <button class="btn-filter active" data-tech-filter="all">All Skills</button>
-          <button class="btn-filter" data-tech-filter="networking">Networking & Protocols</button>
-          <button class="btn-filter" data-tech-filter="cybersec">Cybersecurity & Systems</button>
-          <button class="btn-filter" data-tech-filter="webdev">Web & Software</button>
-        </div>
-
-        <!-- Tech Stack Grid -->
-        <div class="row g-4" id="techGrid">
-
-          <!-- Cisco Networking -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="networking" data-aos="fade-up">
-            <div class="tech-card">
-              <i class="fa-solid fa-network-wired tech-icon"></i>
-              <div class="tech-name">Cisco Networking</div>
-              <div class="tech-badge">Routing & Switching</div>
-            </div>
-          </div>
-
-          <!-- Linux / Terminal -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="cybersec" data-aos="fade-up"
-            data-aos-delay="100">
-            <div class="tech-card">
-              <i class="devicon-linux-plain tech-icon" style="color: var(--cyan-glow);"></i>
-              <div class="tech-name">Linux OS</div>
-              <div class="tech-badge">Debian / Ubuntu / Bash</div>
-            </div>
-          </div>
-
-          <!-- Wireshark -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="networking" data-aos="fade-up"
-            data-aos-delay="150">
-            <div class="tech-card">
-              <i class="fa-solid fa-chart-line tech-icon" style="color: #38bdf8;"></i>
-              <div class="tech-name">Wireshark</div>
-              <div class="tech-badge">Packet Analysis</div>
-            </div>
-          </div>
-
-          <!-- Python -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="webdev" data-aos="fade-up" data-aos-delay="200">
-            <div class="tech-card">
-              <i class="devicon-python-plain tech-icon" style="color: #ffde57;"></i>
-              <div class="tech-name">Python</div>
-              <div class="tech-badge">Network Scripting</div>
-            </div>
-          </div>
-
-          <!-- HTML5 -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="webdev" data-aos="fade-up" data-aos-delay="250">
-            <div class="tech-card">
-              <i class="devicon-html5-plain tech-icon" style="color: #e44d26;"></i>
-              <div class="tech-name">HTML5</div>
-              <div class="tech-badge">Semantic Markup</div>
-            </div>
-          </div>
-
-          <!-- CSS3 -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="webdev" data-aos="fade-up" data-aos-delay="300">
-            <div class="tech-card">
-              <i class="devicon-css3-plain tech-icon" style="color: #264de4;"></i>
-              <div class="tech-name">CSS3 Modern</div>
-              <div class="tech-badge">Glassmorphism & Flex</div>
-            </div>
-          </div>
-
-          <!-- JavaScript -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="webdev" data-aos="fade-up" data-aos-delay="350">
-            <div class="tech-card">
-              <i class="devicon-javascript-plain tech-icon" style="color: #f7df1e;"></i>
-              <div class="tech-name">JavaScript</div>
-              <div class="tech-badge">ES6+ & Async APIs</div>
-            </div>
-          </div>
-
-          <!-- Git & GitHub -->
-          <div class="col-lg-3 col-md-4 col-6 tech-item" data-category="cybersec" data-aos="fade-up"
-            data-aos-delay="400">
-            <div class="tech-card">
-              <i class="devicon-git-plain tech-icon" style="color: #f05032;"></i>
-              <div class="tech-name">Git & GitHub</div>
-              <div class="tech-badge">Version Control</div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROJECTS SHOWCASE SECTION -->
-    <section class="section" id="projects">
-      <div class="container">
-
-        <div class="text-center mb-5" data-aos="fade-up">
-          <div class="section-label"><i class="fa-solid fa-folder-open"></i> // PROJECTS & CASE STUDIES</div>
-          <h2 class="section-title">Featured <span class="gradient-text">Projects & Case Studies</span></h2>
-          <p style="color: var(--text-muted); max-width: 620px; margin: 0 auto;">
-            Explore real-world computer network simulations, the award-winning JERNIH. AI Civic Platform (LKS 2026),
-            and dedicated server infrastructure case studies.
-          </p>
-        </div>
-
-        <!-- Project Filters -->
-        <div class="filter-btn-group" data-aos="fade-up" data-aos-delay="100">
-          <button class="btn-filter active" data-proj-filter="all">All Projects</button>
-          <button class="btn-filter" data-proj-filter="networking">Networking</button>
-          <button class="btn-filter" data-proj-filter="webapps">Web Apps</button>
-          <button class="btn-filter" data-proj-filter="hardware">Hardware</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="row g-4" id="projectGrid">
-
-          <!-- Project 1 -->
-          <div class="col-lg-4 col-md-6 project-item" data-category="networking" data-aos="fade-up"
-            data-aos-delay="100">
-            <div class="project-card">
-              <div class="project-img-wrap">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
-                  alt="Enterprise Network Topology">
-                <div class="project-img-overlay"></div>
-              </div>
-              <div class="project-body">
-                <div class="badge-pill-space mb-3" style="font-size: 0.7rem; padding: 4px 10px;">
-                  <span class="dot"></span> NETWORKING
-                </div>
-                <h3 class="project-title">Enterprise Network Topology</h3>
-                <p class="project-desc">Designed a multi-VLAN enterprise infrastructure with OSPF dynamic routing, DHCP
-                  relay, and access control policies using Cisco Packet Tracer.</p>
-                <div class="project-tags">
-                  <span class="tag-pill">Cisco iOS</span>
-                  <span class="tag-pill">VLAN</span>
-                  <span class="tag-pill">OSPF</span>
-                  <span class="tag-pill">DHCP</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-outline-space btn-project-action" onclick="openCaseStudy(
-                    'Enterprise Network Topology Simulation',
-                    'Networking Infrastructure',
-                    'Cisco Packet Tracer, OSPF, VLAN, ACL, DHCP Relay',
-                    'Configured a dual-core router setup with 4 distinct VLAN segments (Management, Staff, Server Farm, Guest Wi-Fi) ensuring sub-second failover and strict ACL security boundary.',
-                    'Core Router -> Multi-layer Switch -> Access Switches -> Endpoint Devices'
-                  )">
-                    <i class="fa-solid fa-circle-info me-1"></i> Case Study
-                  </button>
-                  <a href="https://github.com/radithyaputr" target="_blank" class="btn-space btn-project-action">
-                    <i class="fa-brands fa-github me-1"></i> Repo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: JERNIH. AI Civic Platform -->
-          <div class="col-lg-4 col-md-6 project-item" data-category="webapps" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-card">
-              <div class="project-img-wrap">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
-                  alt="JERNIH AI Civic Platform">
-                <div class="project-img-overlay"></div>
-              </div>
-              <div class="project-body">
-                <div class="badge-pill-space mb-3"
-                  style="font-size: 0.7rem; padding: 4px 10px; color: var(--neon-pink); border-color: rgba(252,61,33,0.3); background: rgba(252,61,33,0.1);">
-                  <span class="dot" style="background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink);"></span>
-                  AI & WEB APP · LKS 2026
-                </div>
+              <div class="featured-data">
+                <div class="project-kicker mono">FLAGSHIP &middot; PROJECT-02 &middot; WEB APP</div>
                 <h3 class="project-title">JERNIH. — AI Civic Platform</h3>
-                <p class="project-desc">Multimodal AI platform built for National LKS 2026. Features a 4-Tier Graceful
-                  Fallback Engine (Llama 3.1, Gemini 1.5, OpenRouter), RAG Engine, Hoax Checker, and 3D Maps.</p>
+                <p class="project-desc">
+                  Multimodal AI platform built for National LKS 2026 by JERNIH Team. A four-tier graceful fallback
+                  engine across Groq, Gemini, OpenRouter, and an offline rule engine, with RAG, hoax checking, OCR, and
+                  3D mapping.
+                </p>
+
+                <dl class="meta-ledger">
+                  <div>
+                    <dt class="mono">EVENT</dt>
+                    <dd>LKS DIKMEN 2026 &middot; AI EXHIBITION</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">TEAM</dt>
+                    <dd>JERNIH &middot; 5 MEMBERS</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">STANDING</dt>
+                    <dd>1ST PROV. BENGKULU &middot; NAT'L #15</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">SCORE</dt>
+                    <dd class="accent">87.13</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">SK</dt>
+                    <dd>1365/B/H3/PN.00/2026</dd>
+                  </div>
+                </dl>
+
                 <div class="project-tags">
-                  <span class="tag-pill">Python Streamlit</span>
-                  <span class="tag-pill">LangChain</span>
-                  <span class="tag-pill">Llama 3.1 70B</span>
-                  <span class="tag-pill">Gemini 1.5</span>
-                  <span class="tag-pill">PyDeck 3D</span>
+                  <span class="tag-pill mono">Python Streamlit</span>
+                  <span class="tag-pill mono">LangChain</span>
+                  <span class="tag-pill mono">Llama 3.1 70B</span>
+                  <span class="tag-pill mono">Gemini 1.5</span>
+                  <span class="tag-pill mono">PyDeck 3D</span>
                 </div>
+
                 <div class="project-actions">
-                  <button class="btn-outline-space btn-project-action"
-                    style="color: var(--neon-pink) !important; border-color: var(--neon-pink);" onclick="openCaseStudy(
+                  <button class="btn btn-ghost btn-sm" type="button" onclick="openCaseStudy(
                     'JERNIH. — Multimodal AI Civic Platform (National LKS 2026)',
                     'Artificial Intelligence & Web Engineering',
                     'Python (Streamlit), LangChain, ChromaDB, Groq Llama 3.1 70B, Google Gemini 1.5 Flash, OpenRouter, PyDeck 3D Maps',
-                    'Engineered for National LKS 2026 AI Exhibition by JERNIH TEAM (SMKN 1 Kota Bengkulu). Won 1st Place Bengkulu Province & Rank #15 Nationally. Built with a 4-Tier Graceful Fallback System ensuring zero-downtime AI queries across Groq, Gemini, OpenRouter, and offline rule-based fallback. Features 8 integrated modules including RAG Civic Copilot, Hoax Checker, Smart Scanner (OCR 3-layer), and 3D Predictive Maps.',
+                    'Engineered for National LKS 2026 AI Exhibition by JERNIH TEAM (SMKN 1 Kota Bengkulu). Won 1st Place Bengkulu Province and Rank #15 Nationally with a score of 87.13. Built with a four-tier graceful fallback system ensuring zero-downtime AI queries across Groq, Gemini, OpenRouter, and offline rule-based fallback. Features 8 integrated modules including RAG Civic Copilot, Hoax Checker, Smart Scanner (OCR 3-layer), and 3D Predictive Maps.',
                     'User Query -> Security Sanitizer -> Tier 1 (Groq Llama 3.1 70B) / Tier 2 (Gemini 1.5) / Tier 3 (OpenRouter) / Tier 4 (Offline Rule-Based) -> Streamlit Multimodal UI'
                   )">
-                    <i class="fa-solid fa-circle-info me-1"></i> Case Study
+                    <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i> Case Study
                   </button>
-                  <a href="https://jernih-website-lks-2026.streamlit.app/" target="_blank"
-                    class="btn-space btn-project-action">
-                    <i class="fa-solid fa-play me-1"></i> Live Demo
+                  <a href="https://jernih-website-lks-2026.streamlit.app/" target="_blank" rel="noopener"
+                    class="btn btn-solid btn-sm">
+                    <i class="fa-solid fa-play me-1" aria-hidden="true"></i> Live Demo
                   </a>
-                  <a href="https://github.com/radithyaputr/jernih-project" target="_blank"
-                    class="btn-outline-space btn-project-action">
-                    <i class="fa-brands fa-github me-1"></i> Repo
+                  <a href="https://github.com/radithyaputr/jernih-project" target="_blank" rel="noopener"
+                    class="btn btn-ghost btn-sm">
+                    <i class="fa-brands fa-github me-1" aria-hidden="true"></i> Repo
                   </a>
                 </div>
               </div>
+            </article>
+
+            <div class="row g-4 projects-row">
+
+              <!-- Project 1 -->
+              <div class="col-lg-6 project-item" data-category="networking">
+                <article class="project-card">
+                  <div class="project-img-wrap">
+                    <img src="assets/projects/project-1.jpg"
+                      onerror="this.onerror=null;this.src='assets/projects/project-topology-mockup.svg'"
+                      alt="Mockup preview — enterprise multi-VLAN topology simulation with OSPF routing" width="800"
+                      height="500" loading="lazy" decoding="async">
+                  </div>
+                  <div class="project-body">
+                    <div class="project-kicker mono">PROJECT-01 &middot; NETWORKING</div>
+                    <h3 class="project-title">Enterprise Network Topology</h3>
+                    <p class="project-desc">
+                      Multi-VLAN enterprise infrastructure with OSPF dynamic routing, DHCP relay, and access control
+                      policies, built in Cisco Packet Tracer.
+                    </p>
+                    <div class="project-tags">
+                      <span class="tag-pill mono">Cisco IOS</span>
+                      <span class="tag-pill mono">VLAN</span>
+                      <span class="tag-pill mono">OSPF</span>
+                      <span class="tag-pill mono">DHCP</span>
+                    </div>
+                    <div class="project-actions">
+                      <button class="btn btn-ghost btn-sm" type="button" onclick="openCaseStudy(
+                        'Enterprise Network Topology Simulation',
+                        'Networking Infrastructure',
+                        'Cisco Packet Tracer, OSPF, VLAN, ACL, DHCP Relay',
+                        'Configured a dual-core router setup with 4 distinct VLAN segments (Management, Staff, Server Farm, Guest Wi-Fi) ensuring sub-second failover and strict ACL security boundaries.',
+                        'Core Router -> Multi-layer Switch -> Access Switches -> Endpoint Devices'
+                      )">
+                        <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i> Case Study
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Project 3 -->
+              <div class="col-lg-6 project-item" data-category="hardware">
+                <article class="project-card">
+                  <div class="project-img-wrap">
+                    <img src="assets/projects/project-3.jpg"
+                      onerror="this.onerror=null;this.src='assets/projects/project-server-mockup.svg'"
+                      alt="Mockup preview — 12 TJKT 1 custom rack server assembly, RAID 1 array, and local lab hosting interface" width="800"
+                      height="500" loading="lazy" decoding="async">
+                  </div>
+                  <div class="project-body">
+                    <div class="project-kicker mono">PROJECT-03 &middot; INFRASTRUCTURE</div>
+                    <h3 class="project-title">12 TJKT 1 Dedicated Server</h3>
+                    <p class="project-desc">
+                      Custom rack server assembly, RAID 1 storage, Linux deployment, and local DNS/web hosting for the
+                      Class 12 TJKT 1 lab environment.
+                    </p>
+                    <div class="project-tags">
+                      <span class="tag-pill mono">Linux Server</span>
+                      <span class="tag-pill mono">RAID 1</span>
+                      <span class="tag-pill mono">Local DNS/Web</span>
+                      <span class="tag-pill mono">Hardware</span>
+                    </div>
+                    <div class="project-actions">
+                      <button class="btn btn-ghost btn-sm" type="button" onclick="openCaseStudy(
+                        'Class 12 TJKT 1 Dedicated Local Server Rig',
+                        'Infrastructure & Systems Engineering',
+                        'Linux Server OS (Debian/Ubuntu), RAID 1 Storage Array, Apache/Nginx, Local DNS, Hardware Assembly & Diagnostics',
+                        'Assembled and deployed a dedicated local rack server for Class 12 TJKT 1 at SMKN 1 Kota Bengkulu. Implemented RAID 1 disk mirroring for zero data-loss, local DNS routing for class lab projects, hardware thermal diagnostics, and Linux kernel security hardening.',
+                        'Hardware Assembly -> Thermal & RAM Diagnostics -> RAID 1 Storage -> Linux Server OS -> Local DNS & Web Services (12 TJKT 1)'
+                      )">
+                        <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i> Case Study
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
             </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS & HONORS SECTION -->
+      <section class="section section-honors" id="certifications">
+        <div class="container">
+
+          <div class="section-head">
+            <div class="section-label mono"><span class="sec-index">SECTION-04</span><span class="sec-div"></span><span
+                class="sec-name">MISSION LOG</span></div>
+            <h2 class="section-title">Verified results.</h2>
+            <p class="section-desc">Competition outcomes and industry credentials. Official references on file.</p>
           </div>
 
-          <!-- Project 3: 12 TJKT 1 Dedicated Server -->
-          <div class="col-lg-4 col-md-6 project-item" data-category="hardware" data-aos="fade-up" data-aos-delay="300">
-            <div class="project-card">
-              <div class="project-img-wrap">
-                <img src="server-tjkt-2026.png" alt="Class 12 TJKT 1 Dedicated Server">
-                <div class="project-img-overlay"></div>
-              </div>
-              <div class="project-body">
-                <div class="badge-pill-space mb-3"
-                  style="font-size: 0.7rem; padding: 4px 10px; color: #ffb974; border-color: rgba(255,185,116,0.3); background: rgba(255,185,116,0.1);">
-                  <span class="dot" style="background: #ffb974; box-shadow: 0 0 10px #ffb974;"></span> HARDWARE & SERVER
-                </div>
-                <h3 class="project-title">12 TJKT 1 Dedicated Server</h3>
-                <p class="project-desc">Custom rack server assembly, RAID 1 storage setup, Linux OS deployment, local
-                  DNS/Web hosting, and network optimization for Class 12 TJKT 1.</p>
-                <div class="project-tags">
-                  <span class="tag-pill">Linux Server</span>
-                  <span class="tag-pill">RAID 1 Setup</span>
-                  <span class="tag-pill">Local DNS/Web</span>
-                  <span class="tag-pill">12 TJKT 1</span>
-                  <span class="tag-pill">Hardware</span>
-                </div>
-                <div class="project-actions">
-                  <button class="btn-outline-space btn-project-action"
-                    style="color: #ffb974 !important; border-color: #ffb974;" onclick="openCaseStudy(
-                    'Class 12 TJKT 1 Dedicated Local Server Rig',
-                    'Infrastructure & Systems Engineering',
-                    'Linux Server OS (Debian/Ubuntu), RAID 1 Storage Array, Apache/Nginx, Local DNS, Hardware Assembly & Diagnostics',
-                    'Assembled and deployed a dedicated high-throughput local rack server for Class 12 TJKT 1 at SMKN 1 Kota Bengkulu. Implemented RAID 1 disk mirroring for zero data-loss, local DNS domain routing for class lab projects, hardware thermal throttling diagnostics, and Linux kernel security hardening.',
-                    'Hardware Assembly -> Thermal & RAM Diagnostics -> RAID 1 Storage -> Linux Server OS -> Local DNS & Web Services (12 TJKT 1)'
-                  )">
-                    <i class="fa-solid fa-circle-info me-1"></i> Case Study
-                  </button>
-                  <a href="https://github.com/radithyaputr" target="_blank" class="btn-space btn-project-action">
-                    <i class="fa-brands fa-github me-1"></i> Details
-                  </a>
-                </div>
-              </div>
+          <div class="ledger-block">
+            <div class="ledger-head">
+              <h3>Mission log</h3>
+              <span class="mono">01 ENTRY</span>
+            </div>
+            <div class="ledger-wrap">
+              <table class="ledger">
+                <thead>
+                  <tr>
+                    <th scope="col">YEAR</th>
+                    <th scope="col">MISSION</th>
+                    <th scope="col">ISSUER</th>
+                    <th scope="col">STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="ledger-gold">
+                    <td data-label="YEAR" class="mono">2026</td>
+                    <td data-label="MISSION">
+                      <strong>LKS Dikmen 2026 — AI Exhibition</strong>
+                      <span class="ledger-sub">1st Place Bengkulu Province &middot; National Rank #15 &middot; Score
+                        87.13</span>
+                    </td>
+                    <td data-label="ISSUER">Kemendikdasmen &middot; Puspresnas</td>
+                    <td data-label="STATUS">
+                      <span class="chip chip-verified">VERIFIED</span>
+                      <span class="ledger-ref mono">SK 1365/B/H3/PN.00/2026</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn-ghost btn-sm ledger-action" type="button" onclick="openCaseStudy(
+              'LKS Dikmen 2026 - AI Exhibition National Finalist',
+              'National Artificial Intelligence Competition',
+              'Artificial Intelligence, Machine Learning, Computer Vision, Kemendikdasmen Puspresnas',
+              'Competed in the Artificial Intelligence Exhibition category at LKS Dikmen 2026 with JERNIH TEAM (SMKN 1 Kota Bengkulu). Won 1st Place at Provincial level and qualified for National Selection, achieving Rank 15 Nationally with a score of 87.13.',
+              'Provincial Champion (Juara 1) -> National Selection -> Ranked #15 Nationally (Score 87.13)'
+            )">
+              <i class="fa-solid fa-award me-1" aria-hidden="true"></i> View Result
+            </button>
+          </div>
+
+          <div class="ledger-block">
+            <div class="ledger-head">
+              <h3>Credentials</h3>
+              <span class="mono">03 RECORDS</span>
+            </div>
+            <div class="ledger-wrap">
+              <table class="ledger">
+                <thead>
+                  <tr>
+                    <th scope="col">CREDENTIAL</th>
+                    <th scope="col">ISSUER</th>
+                    <th scope="col">STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="CREDENTIAL"><strong>Networking Essentials</strong><span class="ledger-sub">IP
+                        routing, IPv4/IPv6 subnetting, ethernet switching, troubleshooting</span></td>
+                    <td data-label="ISSUER">Cisco Networking Academy</td>
+                    <td data-label="STATUS"><span class="chip chip-verified">VERIFIED</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="CREDENTIAL"><strong>Cybersecurity Fundamentals</strong><span
+                        class="ledger-sub">Security principles, threat mitigation, firewall policies, encryption</span></td>
+                    <td data-label="ISSUER">Network Security Pathway</td>
+                    <td data-label="STATUS"><span class="chip chip-verified">VERIFIED</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="CREDENTIAL"><strong>Google IT Support</strong><span class="ledger-sub">Linux
+                        administration, system diagnostics, IT support</span></td>
+                    <td data-label="ISSUER">Professional Certificate Track</td>
+                    <td data-label="STATUS"><span class="chip chip-progress">IN PROGRESS</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CERTIFICATIONS & HONORS SECTION -->
-    <section class="section" id="certifications">
-      <div class="container">
-
-        <div class="text-center mb-5" data-aos="fade-up">
-          <div class="section-label"><i class="fa-solid fa-trophy" style="color: var(--gold);"></i> // HONORS & COMPETITIONS</div>
-          <h2 class="section-title">National & Provincial <span class="gradient-text">Achievements</span></h2>
-          <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">
-            Official competition results, national awards from Kemendikdasmen, and verified industry credentials.
-          </p>
-        </div>
-
-        <!-- FEATURED HONORS CARD: LKS 2026 AI EXHIBITION -->
-        <div class="glass p-4 p-md-5 mb-5"
-          style="border-color: var(--gold-border); background: var(--honor-card-bg);"
-          data-aos="zoom-in">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-2 text-center">
-              <div class="icon-box m-0"
-                style="width: 80px; height: 80px; font-size: 2.5rem; color: var(--gold); background: var(--gold-tint); border: 1px solid var(--gold-border);">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-            </div>
-            <div class="col-lg-7">
-              <div class="d-flex flex-wrap gap-2 mb-2">
-                <span class="badge-pill-space"
-                  style="color: var(--gold); border-color: var(--gold-border); background: var(--gold-tint); font-size: 0.75rem;">
-                  🥇 1ST PLACE BENGKULU PROVINCE
-                </span>
-                <span class="badge-pill-space"
-                  style="color: var(--cyan-glow); border-color: var(--space-border-glow); font-size: 0.75rem;">
-                  🏆 TOP 15 NATIONAL FINALIST (RANK #15)
-                </span>
-              </div>
-              <h3 class="h4 brand-font mb-2" style="color: var(--text-primary);">LKS Dikmen 2026 — Artificial Intelligence (KA/AI Exhibition)
-              </h3>
-              <div class="text-cyan mb-2" style="font-size: 0.9rem;">
-                <i class="fa-solid fa-users me-1"></i> <strong>JERNIH TEAM</strong> · SMKN 1 Kota Bengkulu
-              </div>
-              <p style="color: var(--text-muted); font-size: 0.92rem; margin: 0; line-height: 1.7;">
-                Official national competition organized by <strong>Kemendikdasmen (Pusat Prestasi Nasional /
-                  Puspresnas)</strong>.
-                Secured <strong>1st Place in Bengkulu Province</strong> and advanced to the National Selection, ranking
-                <strong>#15 Nationally</strong> out of top high school AI teams across Indonesia (Official Letter: No.
-                1365/B/H3/PN.00/2026).
+      <!-- SECURITY RESEARCH / VDP SECTION -->
+      <section class="vdp-strip" id="security">
+        <div class="container">
+          <div class="vdp-grid">
+            <div class="vdp-main">
+              <div class="vdp-eyebrow mono">SECTION-05 &middot; VULNERABILITY DISCLOSURE</div>
+              <div class="vdp-wordmark mono">P1 &middot; P2</div>
+              <h2 class="vdp-title">Vulnerability research, disclosed responsibly.</h2>
+              <p class="vdp-copy">
+                Independently discovered and responsibly disclosed two Remote Code Execution vulnerabilities (rated P1
+                and P2) through NASA's official Vulnerability Disclosure Program.
               </p>
+              <p class="vdp-note mono">NO EXPLOIT DETAILS PUBLISHED &middot; REFERENCES AVAILABLE ON REQUEST</p>
             </div>
-            <div class="col-lg-3 text-lg-end text-center">
-              <button class="btn btn-space w-100" onclick="openCaseStudy(
-                'LKS Dikmen 2026 - AI Exhibition National Finalist',
-                'National Artificial Intelligence Competition',
-                'Artificial Intelligence, Machine Learning, Computer Vision, Kemendikdasmen Puspresnas',
-                'Competed in the Artificial Intelligence Exhibition category at LKS Dikmen 2026 with JERNIH TEAM (SMKN 1 Kota Bengkulu). Won 1st Place at Provincial level (Kota Bengkulu / Prov. Bengkulu) and qualified for National Selection, achieving Rank 15 Nationally with a score of 87.13.',
-                'Provincial Champion (Juara 1) -> National Selection -> Ranked #15 Nationally (Score 87.13)'
-              )">
-                <i class="fa-solid fa-award me-1"></i> View Result
-              </button>
-            </div>
+            <aside class="vdp-ledger mono" aria-label="Disclosure record">
+              <div class="vdp-ledger-head">DISCLOSURE RECORD</div>
+              <div class="vdp-ledger-row"><span>PROGRAM</span><strong>NASA-VDP</strong></div>
+              <div class="vdp-ledger-row"><span>CLASS</span><strong>RCE</strong></div>
+              <div class="vdp-ledger-row"><span>SEVERITY</span><strong>P1 &middot; P2</strong></div>
+              <div class="vdp-ledger-row"><span>OUTCOME</span><strong>ACK</strong></div>
+              <div class="vdp-ref">REFS: AVAILABLE ON REQUEST</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE NASA APOD WIDGET SECTION -->
+      <section class="section section-apod" id="nasa">
+        <div class="container">
+          <div class="section-head section-head-center">
+            <div class="section-label mono"><span class="sec-index">SECTION-06</span><span class="sec-div"></span><span
+                class="sec-name">ORBIT</span></div>
+            <h2 class="section-title">Astronomy Picture of the Day.</h2>
+            <p class="section-desc">Live daily imagery from NASA's official open API.</p>
           </div>
         </div>
 
-        <!-- Industry Credentials Grid -->
-        <div class="row g-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="cert-card">
-              <i class="fa-solid fa-certificate cert-icon"></i>
-              <h3 class="cert-title">Networking Essentials</h3>
-              <div class="cert-issuer"><i class="fa-solid fa-building-columns me-1"></i> Cisco Networking Academy</div>
-              <p style="color: var(--text-muted); font-size: 0.88rem;">Validates fundamental skills in IP routing,
-                IPv4/IPv6 subnetting, ethernet switching, and network troubleshooting.</p>
-              <span class="badge-pill-space" style="font-size: 0.7rem; padding: 4px 10px;">VERIFIED</span>
-            </div>
+        <div class="apod-media">
+          <img id="apodImg" src="assets/galaxy.png" alt="Deep-space galaxy field used as a NASA APOD fallback image"
+            width="1600" height="900" loading="lazy" decoding="async">
+          <div class="apod-hud mono">
+            <span id="apodDate">LIVE NASA API FEED</span>
+            <span id="apodCopyright"></span>
           </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="cert-card">
-              <i class="fa-solid fa-shield-cat cert-icon" style="color: var(--cyan-glow);"></i>
-              <h3 class="cert-title">Cybersecurity Fundamentals</h3>
-              <div class="cert-issuer" style="color: var(--neon-pink);"><i class="fa-solid fa-lock me-1"></i> Network
-                Security Pathway</div>
-              <p style="color: var(--text-muted); font-size: 0.88rem;">Covers core security principles, threat
-                mitigation, firewall policies, encryption protocols, and vulnerability analysis.</p>
-              <span class="badge-pill-space"
-                style="font-size: 0.7rem; padding: 4px 10px; color: var(--neon-pink); border-color: rgba(252,61,33,0.4);">VERIFIED</span>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="cert-card">
-              <i class="fa-solid fa-laptop-code cert-icon" style="color: #ffb974;"></i>
-              <h3 class="cert-title">Google IT Support Track</h3>
-              <div class="cert-issuer" style="color: #ffb974;"><i class="fa-brands fa-google me-1"></i> Professional
-                Certificate Track</div>
-              <p style="color: var(--text-muted); font-size: 0.88rem;">Demonstrates proficiency in Linux administration,
-                system diagnostics, domain management, and IT customer support.</p>
-              <span class="badge-pill-space"
-                style="font-size: 0.7rem; padding: 4px 10px; color: #ffb974; border-color: rgba(255,185,116,0.4);">IN
-                PROGRESS</span>
-            </div>
-          </div>
-
         </div>
 
-      </div>
-    </section>
-
-    <!-- LIVE NASA APOD WIDGET SECTION -->
-    <section class="section" id="nasa">
-      <div class="container">
-
-        <div class="text-center mb-5" data-aos="fade-up">
-          <div class="section-label"><i class="fa-solid fa-satellite"></i> // NASA APOD FEED</div>
-          <h2 class="section-title">Astronomy Picture <span class="gradient-text">of the Day</span></h2>
-          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-            Live feed from NASA's official Astronomy Picture of the Day API.
+        <div class="container apod-content">
+          <h3 id="apodTitle">Fetching cosmic data...</h3>
+          <p id="apodDesc">
+            Connecting to NASA's open API to retrieve today's astronomical capture.
           </p>
-        </div>
-
-        <div class="nasa-apod-card" data-aos="zoom-in">
-          <div class="row g-0 align-items-center">
-            <div class="col-lg-6">
-              <div class="apod-img-container">
-                <img id="apodImg" src="assets/galaxy.png"
-                  alt="Cosmic Galaxy — Deep Space Exploration">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="p-4 p-md-5">
-                <div class="badge-pill-space mb-3"
-                  style="color: var(--nasa-red); border-color: rgba(252,61,33,0.4); background: rgba(252,61,33,0.1);">
-                  <i class="fa-solid fa-meteor me-1"></i> <span id="apodDate">LIVE NASA API FEED</span>
-                </div>
-                <h3 class="h3 brand-font mb-3" style="color: var(--text-primary);" id="apodTitle">Fetching Cosmic Data...</h3>
-                <p style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;" id="apodDesc">
-                  Connecting to NASA's Open API servers to retrieve daily astronomical captures and deep space
-                  telemetry.
-                </p>
-                <div id="apodCopyright" class="text-cyan small mb-4 fw-bold"></div>
-                <div class="d-flex flex-wrap gap-2">
-                  <a href="https://science.nasa.gov/apod/" target="_blank" class="btn btn-space">
-                    <i class="fa-solid fa-up-right-from-square me-2"></i> Official NASA APOD Site
-                  </a>
-                  <button class="btn btn-outline-space" onclick="fetchRandomAPOD()" id="btnRandomApod">
-                    <i class="fa-solid fa-shuffle me-2"></i> Random Cosmic Photo
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div class="apod-actions">
+            <a href="https://science.nasa.gov/apod/" target="_blank" rel="noopener" class="btn btn-ghost">
+              <i class="fa-solid fa-up-right-from-square me-2" aria-hidden="true"></i> Official NASA APOD Site
+            </a>
+            <button class="btn btn-solid" type="button" onclick="fetchRandomAPOD()" id="btnRandomApod">
+              <i class="fa-solid fa-shuffle me-2" aria-hidden="true"></i> Random Cosmic Photo
+            </button>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+      <!-- CONTACT SECTION -->
+      <section class="section section-contact" id="contact">
+        <div class="container">
 
-    <!-- CONTACT SECTION -->
-    <section class="section" id="contact">
-      <div class="container">
-
-        <div class="text-center mb-5" data-aos="fade-up">
-          <div class="section-label"><i class="fa-solid fa-paper-plane"></i> // CONTACT</div>
-          <h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2>
-          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-            Have an inquiry, project collaboration, or job opportunity? Send me a message below.
-          </p>
-        </div>
-
-        <div class="row g-5">
-
-          <div class="col-lg-5" data-aos="fade-right">
-            <div class="glass h-100">
-              <h3 class="h5 brand-font mb-4" style="color: var(--text-primary);"><i
-                  class="fa-solid fa-address-card me-2 text-cyan"></i>Contact Details</h3>
-
-              <div class="d-flex align-items-center gap-3 mb-4">
-                <div class="icon-box m-0" style="width: 46px; height: 46px; font-size: 1.1rem;">
-                  <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div>
-                  <div class="stat-label">EMAIL ADDRESS</div>
-                  <div class="fw-bold" style="color: var(--text-primary);"><a href="mailto:radith614@gmail.com"
-                      style="color: var(--text-primary);" class="text-decoration-none">radith614@gmail.com</a></div>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-center gap-3 mb-4">
-                <div class="icon-box m-0"
-                  style="width: 46px; height: 46px; font-size: 1.1rem; color: var(--neon-pink);">
-                  <i class="fa-solid fa-school"></i>
-                </div>
-                <div>
-                  <div class="stat-label">ACADEMIC INSTITUTION</div>
-                  <div class="fw-bold" style="color: var(--text-primary);">SMKN 1 KOTA BENGKULU</div>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-center gap-3">
-                <div class="icon-box m-0" style="width: 46px; height: 46px; font-size: 1.1rem; color: var(--nasa-red);">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div>
-                  <div class="stat-label">LOCATION</div>
-                  <div class="fw-bold" style="color: var(--text-primary);">Indonesia 🇮🇩</div>
-                </div>
-              </div>
-
-            </div>
+          <div class="section-head">
+            <div class="section-label mono"><span class="sec-index">SECTION-07</span><span class="sec-div"></span><span
+                class="sec-name">UPLINK</span></div>
+            <h2 class="section-title">Send a return signal.</h2>
+            <p class="section-desc">For collaboration, research, or opportunities — open a channel below.</p>
           </div>
 
-          <div class="col-lg-7" data-aos="fade-left">
-            <form class="glass" onsubmit="handleSubmit(event)">
+          <div class="contact-grid">
+
+            <aside class="contact-panel">
+              <div class="contact-status mono">
+                <span class="status-live"><span class="dot" aria-hidden="true"></span>LINK STABLE</span>
+                <span class="contact-channel">CH-07</span>
+              </div>
+
+              <div class="contact-row">
+                <span class="mono">EMAIL</span>
+                <a href="mailto:radith614@gmail.com">radith614@gmail.com</a>
+              </div>
+              <div class="contact-row">
+                <span class="mono">LOCATION</span>
+                <strong>Bengkulu, Indonesia</strong>
+              </div>
+              <div class="contact-row">
+                <span class="mono">SCHOOL</span>
+                <strong>SMKN 1 Kota Bengkulu</strong>
+              </div>
+
+              <div class="contact-note mono">BASED IN BENGKULU &middot; UTC+7 &middot; OPEN TO COLLABORATION</div>
+            </aside>
+
+            <form class="contact-form" onsubmit="handleSubmit(event)">
               <div class="row g-3">
                 <div class="col-sm-6">
-                  <label class="stat-label mb-2">YOUR NAME</label>
-                  <input type="text" class="form-control space-form-input p-3" required
-                    placeholder="e.g. Jane Doe">
+                  <label class="form-label mono" for="contactName">YOUR NAME</label>
+                  <input type="text" class="form-control space-form-input" id="contactName" name="name"
+                    autocomplete="name" placeholder="e.g. Jane Doe" required>
                 </div>
                 <div class="col-sm-6">
-                  <label class="stat-label mb-2">EMAIL ADDRESS</label>
-                  <input type="email" class="form-control space-form-input p-3" required
-                    placeholder="yourname@example.com">
+                  <label class="form-label mono" for="contactEmail">EMAIL ADDRESS</label>
+                  <input type="email" class="form-control space-form-input" id="contactEmail" name="email"
+                    autocomplete="email" placeholder="yourname@example.com" required>
                 </div>
                 <div class="col-12">
-                  <label class="stat-label mb-2">YOUR MESSAGE</label>
-                  <textarea rows="5" class="form-control space-form-input p-3" required
-                    placeholder="Type your message here..."></textarea>
+                  <label class="form-label mono" for="contactMessage">YOUR MESSAGE</label>
+                  <textarea rows="5" class="form-control space-form-input" id="contactMessage" name="message"
+                    placeholder="Type your message here..." required></textarea>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-space w-100 py-3">
-                    <i class="fa-solid fa-paper-plane me-2"></i> Send Message
+                  <button type="submit" class="btn btn-solid w-100">
+                    <i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i> Send Message
                   </button>
                 </div>
               </div>
             </form>
+
           </div>
 
         </div>
+      </section>
 
-      </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
       <div class="container">
-        <div class="mb-4">
-          <a href="https://github.com/radithyaputr" target="_blank" class="social-btn" aria-label="GitHub"><i
-              class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/radithya-putra-9baa99333" target="_blank" class="social-btn"
-            aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://www.instagram.com/radithyaputr_/" target="_blank" class="social-btn"
-            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@radithyaputr_" target="_blank" class="social-btn" aria-label="TikTok"><i
-              class="fa-brands fa-tiktok"></i></a>
-          <a href="https://wa.me/6282179790808" target="_blank" class="social-btn" aria-label="WhatsApp"><i
-              class="fa-brands fa-whatsapp"></i></a>
+        <div class="footer-bar mono">
+          AR-TJKT-2026 &middot; DOCKED AT 3.805&deg;S 102.273&deg;E &middot; LINK STABLE
         </div>
 
-        <p class="mb-1 brand-font fw-bold" style="color: var(--text-primary);">ADIEL RADITHYA PUTRA IRWANA</p>
-        <p class="mb-0 text-muted" style="font-size: 0.85rem;">
-          &copy; 2026 · Designed &amp; engineered with <i class="fa-solid fa-heart text-danger"></i> in Bengkulu,
-          Indonesia · SMKN 1 KOTA BENGKULU (XI TJKT 1)
+        <div class="footer-socials">
+          <a href="https://github.com/radithyaputr" target="_blank" rel="noopener" class="social-btn"
+            aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/radithya-putra-9baa99333" target="_blank" rel="noopener"
+            class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/radithyaputr_/" target="_blank" rel="noopener" class="social-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.tiktok.com/@radithyaputr_" target="_blank" rel="noopener" class="social-btn"
+            aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          <a href="https://wa.me/6282179790808" target="_blank" rel="noopener" class="social-btn"
+            aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+        </div>
+
+        <p class="footer-name">Adiel Radithya Putra Irwana</p>
+        <p class="footer-copy">
+          &copy; 2026 &middot; Designed &amp; engineered in Bengkulu, Indonesia &middot; SMKN 1 Kota Bengkulu (XI TJKT 1)
         </p>
       </div>
     </footer>
@@ -798,42 +843,42 @@
   </div>
 
   <!-- FLOATING SPACE CLI TERMINAL BUTTON -->
-  <button class="terminal-floating-btn" onclick="openTerminal()" aria-label="Open Interactive CLI Terminal">
-    <i class="fa-solid fa-terminal"></i>
-    <span class="terminal-btn-text">&gt;_ TERMINAL</span>
+  <button class="terminal-floating-btn" type="button" onclick="openTerminal()"
+    aria-label="Open interactive CLI terminal">
+    <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+    <span class="terminal-btn-text mono">&gt;_ TERMINAL</span>
   </button>
 
   <!-- SCROLL TO TOP ROCKET BUTTON -->
   <a href="#home" class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <i class="fa-solid fa-rocket"></i>
+    <i class="fa-solid fa-rocket" aria-hidden="true"></i>
   </a>
 
   <!-- SPACE CLI TERMINAL MODAL -->
-  <div class="modal fade" id="terminalModal" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="terminalModal" tabindex="-1" aria-labelledby="terminalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content space-modal">
         <div class="terminal-window">
+          <h3 class="visually-hidden" id="terminalTitle">Interactive terminal</h3>
 
           <div class="terminal-header">
-            <div class="terminal-dots">
-              <span class="terminal-dot dot-red" onclick="closeTerminal()" style="cursor: pointer;"></span>
-              <span class="terminal-dot dot-yellow"></span>
-              <span class="terminal-dot dot-green"></span>
+            <div class="terminal-header-label mono">
+              <span class="terminal-prompt">radithya@smkn1-bks:~</span>
+              <span class="terminal-divider">/</span>
+              <span class="terminal-title">INTERACTIVE CLI</span>
             </div>
-            <div class="brand-font text-cyan small fw-bold"><i
-                class="fa-solid fa-terminal me-2"></i>RADITHYA_DEV // INTERACTIVE TERMINAL</div>
-            <button type="button" class="btn-close btn-close-white small" data-bs-dismiss="modal"
-              aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+              aria-label="Close terminal"></button>
           </div>
 
-          <div class="terminal-body" id="terminalOutput">
-            <!-- Terminal Output printed dynamically via js/terminal.js -->
+          <div class="terminal-body mono" id="terminalOutput" role="log" aria-live="polite" aria-label="Terminal output">
           </div>
 
-          <div class="p-3 bg-dark border-top border-secondary d-flex align-items-center gap-2">
-            <span class="text-cyan fw-bold">radithya@dev:~$</span>
-            <input type="text" id="terminalInput" class="terminal-input"
-              placeholder="type 'help', 'bio', 'skills', 'projects', 'nasa', 'contact'..." autocomplete="off">
+          <div class="terminal-input-line">
+            <span class="terminal-prompt mono">radithya@smkn1-bks:~$</span>
+            <input type="text" id="terminalInput" class="terminal-input mono"
+              aria-label="Terminal command input"
+              placeholder="type 'help', 'bio', 'projects', 'vdp', 'coords'..." autocomplete="off" spellcheck="false">
           </div>
 
         </div>
@@ -842,29 +887,29 @@
   </div>
 
   <!-- PROJECT CASE STUDY MODAL -->
-  <div class="modal fade" id="caseStudyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="caseStudyModal" tabindex="-1" aria-labelledby="caseStudyTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content space-modal">
         <div class="modal-header space-modal-header">
           <div>
-            <span class="badge-pill-space" id="caseStudyCategory"
-              style="font-size: 0.7rem; padding: 4px 10px;">CATEGORY</span>
-            <h3 class="modal-title h4 brand-font mt-2" style="color: var(--text-primary);" id="caseStudyTitle">Project Architecture</h3>
+            <span class="chip chip-neutral" id="caseStudyCategory">CATEGORY</span>
+            <h3 class="modal-title" id="caseStudyTitle">Project Architecture</h3>
           </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+            aria-label="Close case study"></button>
         </div>
         <div class="modal-body space-modal-body">
-          <div class="mb-3">
-            <div class="stat-label mb-1">TECH STACK USED</div>
-            <div class="text-cyan fw-bold" id="caseStudyTech">Cisco, Linux, Python</div>
+          <div class="case-block">
+            <div class="case-label mono">TECH STACK USED</div>
+            <div class="case-tech" id="caseStudyTech">Cisco, Linux, Python</div>
           </div>
-          <div class="mb-4">
-            <div class="stat-label mb-1">PROJECT SUMMARY & CHALLENGE</div>
-            <p style="color: var(--text-muted); line-height: 1.8;" id="caseStudyDesc">Description...</p>
+          <div class="case-block">
+            <div class="case-label mono">PROJECT SUMMARY &amp; CHALLENGE</div>
+            <p class="case-desc" id="caseStudyDesc">Description...</p>
           </div>
-          <div class="mb-3">
-            <div class="stat-label mb-1">SYSTEM ARCHITECTURE / DATA FLOW</div>
-            <div class="p-3 rounded bg-dark text-info font-monospace small" id="caseStudyArch">Flow...</div>
+          <div class="case-block">
+            <div class="case-label mono">SYSTEM ARCHITECTURE / DATA FLOW</div>
+            <div class="case-arch mono" id="caseStudyArch">Flow...</div>
           </div>
         </div>
       </div>
@@ -873,7 +918,6 @@
 
   <!-- JS LIBRARIES -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
